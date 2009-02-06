@@ -10,8 +10,6 @@ function! s:insert_gates()
   execute "normal! o#define " . gatename . " "
   execute "normal! Go#endif /* " . gatename . " */"
   execute "normal! O"
-  execute "normal! se im"
-  execute "normal! imap <Esc> <C-L>"
 endfunction
 autocmd BufNewFile *.{h,hpp} call <SID>insert_gates()
 
