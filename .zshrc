@@ -22,10 +22,10 @@ setopt autopushd pushdminus pushdsilent pushdtohome
 bindkey -e
 
 # Is there another editor?
-export VISUAL=emacs
-export EDITOR=emacs
+export VISUAL=gvim
+export EDITOR=gvim
 
-zstyle :compinstall filename '/home/yuval/.zshrc'
+zstyle :compinstall filename '/home/bergundy/.zshrc'
 
 # completion -------------------------------------------------------------------
 
@@ -62,7 +62,6 @@ ${=${(f)"$(cat /etc/hosts(|)(N) <<EOF
 (ypcat hosts 2>/dev/null))"}%%\#*} ); #" quote is here just for syntax highlighting!
 zstyle ':completion:*' hosts $_myhosts;
 
-zstyle :compinstall filename '/home/infomedia/.zshrc'
 autoload -U compinit
 compinit -u
 
@@ -82,9 +81,12 @@ select-word-style bash
 ################################################################################
 
 alias ls='ls --color'
-alias emacs='emacs -nw'
 
-export PROMPT=$'%{\e[1;32m%}%n@%M %U%{\e[0;33m%}%~%{\e[0m%}%u %{\e[1;34m%}$%{\e[0m%} '
+if [ $UID -eq 0 ]; then
+    export PROMPT=$'%{\e[1;31m%}%M %U%{\e[0;33m%}%~%{\e[0m%}%u %{\e[1;35m%}%?%{\e[1;34m%}$%{\e[0m%} '
+else
+    export PROMPT=$'%{\e[1;32m%}%n@%M %U%{\e[0;33m%}%~%{\e[0m%}%u %{\e[1;35m%}%?%{\e[1;34m%}$%{\e[0m%} '
+fi
 
 ################################################################################
 
@@ -130,5 +132,4 @@ function emacspm() {
 function named_dir(){ eval 'export $1="$2" && hash -d $1="$2"' }
 # named_dir golan_asm_t "/home/yuval/p4/golan/TrafficShield/mng/scripts/packages/pure_perl_test/t"
 
-alias vim=emacs
-alias vi=emacs
+alias vi=gvim
