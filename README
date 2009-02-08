@@ -5,4 +5,4 @@ to add this repository to a new user/host
     git config --global user.name "Your Name Comes Here"
     git config --global user.email you@yourdomain.example.com
     git remote add origin git@github.com:bergundy/rcs.git
-    git pull master
+    git pull origin master
